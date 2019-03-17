@@ -1,5 +1,9 @@
-import com.rabbitmq.client.*;
+package MQreceiverStub;
 
+import com.rabbitmq.client.*;
+import org.springframework.stereotype.Component;
+
+@Component
 public class Recv {
 
     private final static String QUEUE_NAME = "hello";

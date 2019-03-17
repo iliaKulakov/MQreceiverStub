@@ -1,6 +1,9 @@
+package MQreceiverStub;
+
 import com.rabbitmq.client.*;
+import org.springframework.stereotype.Component;
 
-
+@Component
 public class Worker {
 
     private static final String TASK_QUEUE_NAME = "task_queue";

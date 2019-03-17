@@ -1,7 +1,11 @@
+package MQreceiverStub;
+
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.Channel;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Send {
 
    private final static String QUEUE_NAME = "hello";
