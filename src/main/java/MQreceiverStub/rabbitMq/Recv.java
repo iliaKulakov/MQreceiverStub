@@ -1,4 +1,4 @@
-package MQreceiverStub;
+package MQreceiverStub.rabbitMq;
 
 import com.rabbitmq.client.*;
 import org.springframework.stereotype.Component;

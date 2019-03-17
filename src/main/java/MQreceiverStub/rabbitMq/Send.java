@@ -1,4 +1,4 @@
-package MQreceiverStub;
+package MQreceiverStub.rabbitMq;
 
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.Connection;
