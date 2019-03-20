@@ -28,8 +28,6 @@ public class NewTask {
             System.out.println(" [x] Sent '" + message + "'");
 
 
-
-
         }
     }
 }

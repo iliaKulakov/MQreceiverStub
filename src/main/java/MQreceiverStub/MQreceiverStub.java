@@ -1,57 +1,86 @@
 package MQreceiverStub;
 
 import MQreceiverStub.sender.Sender;
-import com.fasterxml.jackson.annotation.JacksonInject;
 import org.apache.activemq.ActiveMQConnectionFactory;
+import org.apache.activemq.broker.BrokerService;
 import org.apache.activemq.command.ActiveMQQueue;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jms.DefaultJmsListenerContainerFactoryConfigurer;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
-import org.springframework.jms.config.JmsListenerContainerFactory;
 import org.springframework.jms.core.JmsTemplate;
-import org.springframework.stereotype.Component;
+import org.springframework.jms.support.converter.MessageType;
 
-import javax.jms.ConnectionFactory;
-import javax.jms.Queue;
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 @Configuration
 @SpringBootApplication
-@ComponentScan
+
+// Это лишнее @SpringBootApplication уже включает это. https://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-using-springbootapplication-annotation.html
+
+//@ComponentScan
 @EnableJms
-public class MQreceiverStub {
+public class MQreceiverStub implements ApplicationRunner {
 
-//	public final static String PRODUCT_MESSAGE_QUEUE = "product-message-queue";
-//
-//	@Bean
-//	public JmsListenerContainerFactory<?> jmsFactory(ConnectionFactory connectionFactory,
-//													 DefaultJmsListenerContainerFactoryConfigurer configurer) {
-//		DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
-//		// This provides all boot's default to this factory, including the message converter
-//		configurer.configure(factory, connectionFactory);
-//		// You could still override some of Boot's default if necessary.
-//		return factory;
-//	}
+    @Value("${spring.activemq.broker-url}")
+    private String brokerUrl;
+
+    @Autowired
+    public Sender sender;
 
 
-	@Bean
-	public ActiveMQQueue queue()
-	{
-		return new ActiveMQQueue("inmemory.queue");
-	}
+    @Bean
+    public ActiveMQQueue queue() {
+        return new ActiveMQQueue("inmemory.queue");
+    }
 
 
-	public static void main(String[] args) {
-		SpringApplication.run(MQreceiverStub.class, args);
+    public static void main(String[] args) throws Exception {
+        SpringApplication.run(MQreceiverStub.class, args);
 
-	Sender sender = new Sender();
-	sender.publishMessage();
 
-	}
+    }
+
+    @Override
+    public void run(ApplicationArguments args) throws Exception {
+        sender.send("111");
+    }
+
+    @Bean
+    public BrokerService broker() throws Exception {
+        BrokerService broker = new BrokerService();
+        broker.addConnector(brokerUrl);
+        broker.setPersistent(false);
+        return broker;
+    }
+
+    //Config for JmsListener
+    @Bean
+    public ActiveMQConnectionFactory activeMQConnectionFactory() {
+        ActiveMQConnectionFactory activeMQConnectionFactory = new ActiveMQConnectionFactory();
+        activeMQConnectionFactory.setBrokerURL(brokerUrl);
+        return activeMQConnectionFactory;
+    }
+
+    @Bean
+    public DefaultJmsListenerContainerFactory jmsListenerContainerFactory() {
+        DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
+        factory.setConnectionFactory(activeMQConnectionFactory());
+//        factory.setMessageConverter(messageConverter());
+        factory.setConcurrency("3-10");
+        return factory;
+    }
+
+//    @Bean
+//    public JmsTemplate jmsTemplate() {
+//        return new JmsTemplate(activeMQConnectionFactory());
+//    }
 
 }

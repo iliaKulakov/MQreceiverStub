@@ -1,7 +1,12 @@
 package MQreceiverStub.rabbitMq;
 
-import com.rabbitmq.client.*;
+import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.ConnectionFactory;
+import com.rabbitmq.client.DeliverCallback;
 import org.springframework.stereotype.Component;
+
+import java.nio.charset.StandardCharsets;
 
 @Component
 public class Worker {
@@ -20,7 +25,7 @@ public class Worker {
         channel.basicQos(1);
 
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
-            String message = new String(delivery.getBody(), "UTF-8");
+            String message = new String(delivery.getBody(), StandardCharsets.UTF_8);
 
             System.out.println(" [x] Received '" + message + "'");
             try {
@@ -30,23 +35,23 @@ public class Worker {
                 channel.basicAck(delivery.getEnvelope().getDeliveryTag(), false);
             }
         };
-        channel.basicConsume(TASK_QUEUE_NAME, false, deliverCallback, consumerTag -> { });
+        channel.basicConsume(TASK_QUEUE_NAME, false, deliverCallback, consumerTag -> {
+        });
     }
 
     private static void doWork(String task) {
 
-        for(char ch: task.toCharArray()) {
+        for (char ch : task.toCharArray()) {
 
-            if(ch == '.') {
+            if (ch == '.') {
 
                 try {
                     Thread.sleep(1000);
 
 
-            }catch (InterruptedException _ignored) {
+                } catch (InterruptedException _ignored) {
                     Thread.currentThread().interrupt();
                 }
-
 
 
             }
