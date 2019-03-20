@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Queue;
 
-import static MQreceiverStub.MQreceiverStub.PRODUCT_MESSAGE_QUEUE;
+//import static MQreceiverStub.MQreceiverStub.PRODUCT_MESSAGE_QUEUE;
 
 
 @EnableJms
