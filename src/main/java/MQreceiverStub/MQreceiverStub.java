@@ -1,5 +1,6 @@
 package MQreceiverStub;
 
+import MQreceiverStub.listener.Consumer;
 import MQreceiverStub.sender.Sender;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.broker.BrokerService;
@@ -51,6 +52,9 @@ public class MQreceiverStub implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         sender.send("111");
+        consumer.listener();
+        consumer.listenerWithArg("111");
+
     }
 
     @Bean
@@ -78,9 +82,8 @@ public class MQreceiverStub implements ApplicationRunner {
         return factory;
     }
 
-//    @Bean
-//    public JmsTemplate jmsTemplate() {
-//        return new JmsTemplate(activeMQConnectionFactory());
-//    }
+    @Autowired
+    Consumer consumer;
+
 
 }
