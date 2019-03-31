@@ -4,6 +4,7 @@ import MQreceiverStub.listener.Consumer;
 import MQreceiverStub.sender.Sender;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.broker.BrokerService;
+import org.apache.activemq.broker.Connection;
 import org.apache.activemq.command.ActiveMQQueue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -42,18 +43,15 @@ public class MQreceiverStub implements ApplicationRunner {
         return new ActiveMQQueue("inmemory.queue");
     }
 
-
     public static void main(String[] args) throws Exception {
         SpringApplication.run(MQreceiverStub.class, args);
-
-
     }
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        sender.send("111");
+        sender.sendMessage();
         consumer.listener();
-        consumer.listenerWithArg("111");
+//        consumer.listenerWithArg("111");
 
     }
 

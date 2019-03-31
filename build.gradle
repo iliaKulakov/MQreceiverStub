@@ -33,5 +33,7 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-activemq")
     compile("org.apache.activemq:activemq-broker")
     compile("com.fasterxml.jackson.core:jackson-databind")
-    
+   
+
+
 }
