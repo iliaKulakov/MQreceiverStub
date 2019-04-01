@@ -34,14 +34,27 @@ public class Sender {
 
 
 //        Session session = activeMQConnectionFactory.createConnection().createSession();
-
 //        TextMessage message = session.createTextMessage();
-        String msg_text = "test1";
+        String msg_text = "FirstProcessingSystemRq\n" +
+                            "System=1";
+
 //        message.setText(msg_text);     // msg_text is a String
 
         jmsTemplate.convertAndSend(queue,msg_text);
 
         System.out.println("Sent message succesfully");
     }
+
+    public void sendSecondSystemMessage() throws Exception {
+
+        String msg_text = "SecondProcessingSystemRq\n" +
+                "System=2";
+
+        jmsTemplate.convertAndSend(queue,msg_text);
+
+        System.out.println("Sent message succesfully");
+    }
+
+
 
 }
