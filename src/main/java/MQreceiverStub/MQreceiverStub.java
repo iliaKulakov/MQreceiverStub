@@ -27,7 +27,6 @@ import java.util.concurrent.TimeUnit;
 
 // Это лишнее @SpringBootApplication уже включает это. https://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-using-springbootapplication-annotation.html
 
-//@ComponentScan
 @EnableJms
 public class MQreceiverStub implements ApplicationRunner {
 
@@ -52,7 +51,6 @@ public class MQreceiverStub implements ApplicationRunner {
         sender.sendMessage();
         sender.sendSecondSystemMessage();
         consumer.listener();
-//        consumer.listenerWithArg("111");
 
     }
 
@@ -64,7 +62,6 @@ public class MQreceiverStub implements ApplicationRunner {
         return broker;
     }
 
-    //Config for JmsListener
     @Bean
     public ActiveMQConnectionFactory activeMQConnectionFactory() {
         ActiveMQConnectionFactory activeMQConnectionFactory = new ActiveMQConnectionFactory();
@@ -76,13 +73,11 @@ public class MQreceiverStub implements ApplicationRunner {
     public DefaultJmsListenerContainerFactory jmsListenerContainerFactory() {
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
         factory.setConnectionFactory(activeMQConnectionFactory());
-//        factory.setMessageConverter(messageConverter());
         factory.setConcurrency("3-10");
         return factory;
     }
 
     @Autowired
     Consumer consumer;
-
 
 }

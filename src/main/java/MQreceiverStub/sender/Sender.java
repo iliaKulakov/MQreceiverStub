@@ -32,13 +32,8 @@ public class Sender {
 
     public void sendMessage() throws Exception {
 
-
-//        Session session = activeMQConnectionFactory.createConnection().createSession();
-//        TextMessage message = session.createTextMessage();
         String msg_text = "FirstProcessingSystemRq\n" +
                             "System=1";
-
-//        message.setText(msg_text);     // msg_text is a String
 
         jmsTemplate.convertAndSend(queue,msg_text);
 
