@@ -18,10 +18,10 @@ public class Sender {
     private JmsTemplate jmsTemplate;
 
     @Autowired
-    Queue queue;
+    private Queue queue;
 
     @Autowired
-    ActiveMQConnectionFactory activeMQConnectionFactory;
+    private ActiveMQConnectionFactory activeMQConnectionFactory;
 
     public void send(String message) {
         jmsTemplate.convertAndSend(queue,message);

@@ -28,10 +28,10 @@ import java.util.concurrent.TimeUnit;
 public class MQreceiverStub implements ApplicationRunner {
 
     @Autowired
-    public Sender sender;
+    private Sender sender;
 
     @Autowired
-    Consumer consumer;
+    private Consumer consumer;
 
     public static void main(String[] args) throws Exception {
         SpringApplication.run(MQreceiverStub.class, args);

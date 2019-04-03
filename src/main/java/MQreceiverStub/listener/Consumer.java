@@ -17,7 +17,7 @@ import javax.jms.TextMessage;
 public class Consumer {
 
     @Autowired
-    JmsTemplate jmsTemplate;
+    private JmsTemplate jmsTemplate;
 
     @JmsListener(destination = "inmemory.queue")
     public void listener() {
