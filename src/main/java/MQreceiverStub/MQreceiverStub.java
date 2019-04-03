@@ -27,19 +27,11 @@ import java.util.concurrent.TimeUnit;
 @EnableJms
 public class MQreceiverStub implements ApplicationRunner {
 
-    @Value("${spring.activemq.broker-url}")
-    private String brokerUrl;
-
     @Autowired
     public Sender sender;
 
     @Autowired
     Consumer consumer;
-
-    @Bean
-    public ActiveMQQueue queue() {
-        return new ActiveMQQueue("inmemory.queue");
-    }
 
     public static void main(String[] args) throws Exception {
         SpringApplication.run(MQreceiverStub.class, args);
@@ -51,29 +43,6 @@ public class MQreceiverStub implements ApplicationRunner {
         sender.sendSecondSystemMessage();
         consumer.listener();
 
-    }
-
-    @Bean
-    public BrokerService broker() throws Exception {
-        BrokerService broker = new BrokerService();
-        broker.addConnector(brokerUrl);
-        broker.setPersistent(false);
-        return broker;
-    }
-
-    @Bean
-    public ActiveMQConnectionFactory activeMQConnectionFactory() {
-        ActiveMQConnectionFactory activeMQConnectionFactory = new ActiveMQConnectionFactory();
-        activeMQConnectionFactory.setBrokerURL(brokerUrl);
-        return activeMQConnectionFactory;
-    }
-
-    @Bean
-    public DefaultJmsListenerContainerFactory jmsListenerContainerFactory() {
-        DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
-        factory.setConnectionFactory(activeMQConnectionFactory());
-        factory.setConcurrency("3-10");
-        return factory;
     }
 
 }
