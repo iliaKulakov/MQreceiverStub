@@ -20,11 +20,11 @@ public class Consumer {
     private JmsTemplate jmsTemplate;
 
     @JmsListener(destination = "inmemory.queue")
-    public void listener() {
+    public void listener(String message) {
 
-        Message msg = (Message) jmsTemplate.receive("inmemory.queue");
+//        Message msg = (Message) jmsTemplate.receive("inmemory.queue");
 
-        System.out.println("Message from queue" + msg);
+        System.out.println("Message from queue" + message);
 
 }
     @JmsListener(destination = "inmemory.queue")
