@@ -1,4 +1,4 @@
-package listener.Configuration;
+package listener.configuration;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.broker.BrokerService;
