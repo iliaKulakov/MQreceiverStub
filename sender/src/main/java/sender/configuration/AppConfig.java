@@ -16,7 +16,7 @@ public class AppConfig {
 
     @Bean
     public ActiveMQQueue queue() {
-        return new ActiveMQQueue("mq.stub.in");
+        return new ActiveMQQueue("testq");
     }
 
 //    public ActiveMQQueue queue() {
