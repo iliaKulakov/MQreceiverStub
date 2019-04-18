@@ -1,14 +1,11 @@
 package MQreceiverStub.sender;
 
-import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
-import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 
-import javax.jms.*;
-import javax.print.attribute.standard.MediaSize;
+import javax.jms.Queue;
 
 
 @Service
@@ -24,7 +21,7 @@ public class Sender {
     private ActiveMQConnectionFactory activeMQConnectionFactory;
 
     public void send(String message) {
-        jmsTemplate.convertAndSend(queue,message);
+        jmsTemplate.convertAndSend(queue, message);
 
         System.out.println("Sent message succesfully");
     }
@@ -33,9 +30,9 @@ public class Sender {
     public void sendMessage() throws Exception {
 
         String msg_text = "FirstProcessingSystemRq\n" +
-                            "System=1";
+                "System=1";
 
-        jmsTemplate.convertAndSend(queue,msg_text);
+        jmsTemplate.convertAndSend(queue, msg_text);
 
         System.out.println("Sent message succesfully");
     }
@@ -45,11 +42,10 @@ public class Sender {
         String msg_text = "SecondProcessingSystemRq\n" +
                 "System=2";
 
-        jmsTemplate.convertAndSend(queue,msg_text);
+        jmsTemplate.convertAndSend(queue, msg_text);
 
         System.out.println("Sent message succesfully");
     }
-
 
 
 }

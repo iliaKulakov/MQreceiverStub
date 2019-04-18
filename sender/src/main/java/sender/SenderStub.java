@@ -20,7 +20,7 @@ public class SenderStub implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        sender.sendMessage();
+        sender.send("Message");
 
     }
 

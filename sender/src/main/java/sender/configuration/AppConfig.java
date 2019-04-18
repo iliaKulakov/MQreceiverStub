@@ -1,7 +1,6 @@
 package sender.configuration;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
-import org.apache.activemq.broker.BrokerService;
 import org.apache.activemq.command.ActiveMQQueue;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -17,19 +16,6 @@ public class AppConfig {
     @Bean
     public ActiveMQQueue queue() {
         return new ActiveMQQueue("testq");
-    }
-
-//    public ActiveMQQueue queue() {
-//        return new ActiveMQQueue("inmemory.queue");
-//    }
-
-
-    @Bean
-    public BrokerService broker() throws Exception {
-        BrokerService broker = new BrokerService();
-        broker.addConnector(brokerUrl);
-        broker.setPersistent(false);
-        return broker;
     }
 
     @Bean

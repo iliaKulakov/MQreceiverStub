@@ -10,7 +10,7 @@ import org.springframework.jms.annotation.EnableJms;
 @Configuration
 @SpringBootApplication
 @EnableJms
-public class ListenerStub implements ApplicationRunner  {
+public class ListenerStub implements ApplicationRunner {
 
     public static void main(String[] args) throws Exception {
         SpringApplication.run(ListenerStub.class, args);
@@ -19,9 +19,6 @@ public class ListenerStub implements ApplicationRunner  {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-//        sender.sendMessage();
-//        sender.sendSecondSystemMessage();
-//        consumer.listener();
         System.out.println("Listener working now ");
     }
 
