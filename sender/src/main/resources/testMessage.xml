@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <item date="January 2009">
+        <mode>1</mode>
+        <reqamt>900</reqamt>
+        <currency>EUR</currency>
+        <interactive>1</interactive>
+    </item>
+</config>

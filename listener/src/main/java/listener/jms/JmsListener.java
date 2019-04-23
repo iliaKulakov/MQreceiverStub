@@ -11,6 +11,8 @@ public class JmsListener {
     public String listenerWithArg(String message) {
         System.out.println("Received Message: " + message);
 
+
+
         String reply = message;
 
         return reply.toUpperCase();

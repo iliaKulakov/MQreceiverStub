@@ -5,9 +5,13 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.jms.Queue;
+import javax.xml.crypto.XMLStructure;
+import javax.xml.crypto.dsig.XMLObject;
+import java.util.List;
 
 @Service
 public class Sender {
+
 
     @Autowired
     private JmsTemplate jmsTemplate;
@@ -21,5 +25,8 @@ public class Sender {
 
         System.out.println("Sent message succesfully");
     }
+
+
+
 
 }

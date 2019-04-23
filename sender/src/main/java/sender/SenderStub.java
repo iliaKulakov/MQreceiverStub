@@ -20,7 +20,18 @@ public class SenderStub implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        sender.send("Message");
+
+        String xmlMessage =  "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                "<config>\n" +
+                "    <item date=\"January 2009\">\n" +
+                "        <mode>1</mode>\n" +
+                "        <reqamt>900</reqamt>\n" +
+                "        <currency>EUR</currency>\n" +
+                "        <interactive>1</interactive>\n" +
+                "    </item>\n" +
+                "</config>";
+
+        sender.send(xmlMessage);
 
     }
 

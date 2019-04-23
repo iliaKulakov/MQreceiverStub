@@ -13,6 +13,9 @@ public class AppConfig {
     @Value("${spring.activemq.broker-url}")
     private String brokerUrl;
 
+
+    String queue
+
     @Bean
     public ActiveMQQueue queue() {
         return new ActiveMQQueue("inmemory.queue");
