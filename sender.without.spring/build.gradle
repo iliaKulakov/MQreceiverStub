@@ -1,0 +1,19 @@
+plugins {
+    id 'java'
+}
+
+group 'com.exampleapp'
+version '0.0.1'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+//    org.apache.activemq:activemq-all:5.3.1
+    compile group: 'org.apache.activemq', name: 'activemq-all', version: '5.15.9'
+    compile group: 'commons-logging', name: 'commons-logging', version: '1.2'
+}
