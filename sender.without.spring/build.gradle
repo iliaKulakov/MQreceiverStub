@@ -13,7 +13,8 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
-//    org.apache.activemq:activemq-all:5.3.1
+
+    compile("com.fasterxml.jackson.core:jackson-databind:2.9.8")
     compile group: 'org.apache.activemq', name: 'activemq-all', version: '5.15.9'
     compile group: 'commons-logging', name: 'commons-logging', version: '1.2'
 }
