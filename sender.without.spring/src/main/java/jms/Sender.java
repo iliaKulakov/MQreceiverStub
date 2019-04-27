@@ -4,9 +4,10 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 
 import javax.jms.*;
 
-public class SendToActiveMQ {
+public class Sender {
 
-    public static void main(String[] args) throws JMSException {
+
+    public void sendMessageWithoutSpring() throws Exception {
         ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://localhost:61616");
 
         // Create a Connection
@@ -34,9 +35,9 @@ public class SendToActiveMQ {
         // Clean up
         session.close();
         connection.close();
-
     }
 
-
-
 }
+
+
+
