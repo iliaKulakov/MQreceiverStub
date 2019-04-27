@@ -38,7 +38,7 @@ public class Sender {
 
         // Tell the producer to send the message
         System.out.println("Sent message: " + message.hashCode() + " : " + Thread.currentThread().getName());
-        System.out.println("Sent message: " + message.getText() + " : " + Thread.currentThread().getName());
+//        System.out.println("Sent message: " + message.getText() + " : " + Thread.currentThread().getName());
         producer.send(message);
 
         // Clean up

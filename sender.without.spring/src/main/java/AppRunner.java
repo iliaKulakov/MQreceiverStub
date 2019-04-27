@@ -1,4 +1,5 @@
-package jms;
+import jms.Reader;
+import jms.Sender;
 
 import javax.jms.JMSException;
 
