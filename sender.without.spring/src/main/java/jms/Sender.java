@@ -25,11 +25,20 @@ public class Sender {
         producer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
 
         // Create a messages
-        String text = "Hello world1! ";
+        String text = "?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                "<config>\n" +
+                "    <item date=\"January 2009\">\n" +
+                "        <mode>1</mode>\n" +
+                "        <reqamt>900</reqamt>\n" +
+                "        <currency>EUR</currency>\n" +
+                "        <interactive>1</interactive>\n" +
+                "    </item>\n" +
+                "</config>";
         TextMessage message = session.createTextMessage(text);
 
         // Tell the producer to send the message
         System.out.println("Sent message: " + message.hashCode() + " : " + Thread.currentThread().getName());
+        System.out.println("Sent message: " + message.getText() + " : " + Thread.currentThread().getName());
         producer.send(message);
 
         // Clean up

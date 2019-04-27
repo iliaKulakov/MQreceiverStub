@@ -18,7 +18,7 @@ public class Reader {
         Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 
         // Create the destination (Topic or Queue)
-        Destination destination = session.createQueue("mq.xml.out");
+        Destination destination = session.createQueue("mq.xml.in");
 
         // create a queue receiver
        MessageConsumer queueReceiver = session.createConsumer(destination);

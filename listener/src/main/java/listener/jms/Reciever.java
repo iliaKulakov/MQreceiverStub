@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Reciever {
 
-    @JmsListener(destination = "testq")
+    @JmsListener(destination = "mq.stub.out")
     public void listenerWithArg(String message) {
         System.out.println("Received Message: " + message);
     }
