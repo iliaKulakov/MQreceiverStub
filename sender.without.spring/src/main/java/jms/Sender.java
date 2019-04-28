@@ -25,7 +25,7 @@ public class Sender {
         producer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
 
         // Create a messages
-        String text = "?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+        String text = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                 "<config>\n" +
                 "    <item date=\"January 2009\">\n" +
                 "        <mode>1</mode>\n" +

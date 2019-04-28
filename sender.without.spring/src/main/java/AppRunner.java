@@ -10,8 +10,8 @@ public class AppRunner {
         Sender sender = new Sender();
         sender.sendMessageWithoutSpring();
 
-//        Reader reader = new Reader();
-//        reader.readMessageWithoutSpring();
+        Reader reader = new Reader();
+        reader.readMessageWithoutSpring();
 
     }
 
