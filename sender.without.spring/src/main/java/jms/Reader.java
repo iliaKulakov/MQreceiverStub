@@ -3,6 +3,10 @@ package jms;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
 import javax.jms.*;
+import javax.sound.midi.Receiver;
+import java.util.Enumeration;
+import java.util.Queue;
+import java.util.function.Predicate;
 
 public class Reader {
 
@@ -23,17 +27,24 @@ public class Reader {
         // create a queue receiver
        MessageConsumer queueReceiver = session.createConsumer(destination);
 
-       // receive a message
-       TextMessage message = (TextMessage) queueReceiver.receive();
+        // create a queue browser
+        QueueBrowser queueBrowser = session.createBrowser((javax.jms.Queue) destination);
 
-       // print the message
-       System.out.println("received message: " + message.getText());
+        // browse the messages
+        Enumeration e = queueBrowser.getEnumeration();
 
-      // close the queue connection
-       connection.close();
+        // receive a message
 
+        TextMessage message = (TextMessage) queueReceiver.receive();
+        // print the message
+        System.out.println("received message: " + message.getText());
+
+        // close the queue connection
+        connection.close();
 
     }
+
+
 }
 
 
