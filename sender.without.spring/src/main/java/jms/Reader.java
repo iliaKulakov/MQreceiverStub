@@ -35,9 +35,10 @@ public class Reader {
 
         // receive a message
 
-        TextMessage message = (TextMessage) queueReceiver.receive();
-        // print the message
-        System.out.println("received message: " + message.getText());
+
+            TextMessage message = (TextMessage) queueReceiver.receive();
+            // print the message
+            System.out.println("received message: " + message.getText());
 
         // close the queue connection
         connection.close();
