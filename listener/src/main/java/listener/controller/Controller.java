@@ -9,28 +9,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/configuration")
 public class Controller {
 
     private BankSystemOneService bankSystemOneService;
-
-//    @Autowired
-//    public Controller(BankSystemOneService bankSystemOneService) {
-//        this.bankSystemOneService = bankSystemOneService;
-//    }
-
-
-//    @ResponseBody
-//    @PostMapping
-//    public BankSystemsDomain createBankSystemConfig(@RequestBody int bankSystemOne, int bankSystemTwo) {
-//
-//        BankSystemsDomain bankSystemsDomain = new BankSystemsDomain();
-//        bankSystemsDomain.setBankSystemOne(bankSystemOne);
-//        bankSystemsDomain.setBankSystemTwo(bankSystemTwo);
-//        return bankSystemsDomain;
-//
-//    }
 
 
     @ResponseBody
@@ -43,7 +28,6 @@ public class Controller {
 
         System.out.println(bankSystemsDomain.toString());
         return bankSystemsDomain;
-
 
     }
 
