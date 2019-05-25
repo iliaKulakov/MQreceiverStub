@@ -24,7 +24,11 @@ public class Controller {
 
         int BankSystemOne = createBankSystemInfo.getBankSystemOne();
         int BankSystemTwo = createBankSystemInfo.getBankSystemOne();
-        BankSystemsDomain bankSystemsDomain = new BankSystemsDomain(BankSystemOne,BankSystemTwo);
+
+        BankSystemsDomain bankSystemsDomain = BankSystemsDomain.getInstance();
+        bankSystemsDomain.setBankSystemOne(BankSystemOne);
+        bankSystemsDomain.setBankSystemTwo(BankSystemTwo);
+//        BankSystemsDomain bankSystemsDomain = new BankSystemsDomain(BankSystemOne,BankSystemTwo);
 
         System.out.println(bankSystemsDomain.toString());
         return bankSystemsDomain;

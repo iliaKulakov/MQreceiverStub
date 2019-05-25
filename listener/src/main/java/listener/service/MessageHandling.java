@@ -1,6 +1,7 @@
 package listener.service;
 
 import listener.Parsing.Parser;
+import listener.controller.domain.BankSystemsDomain;
 import org.springframework.stereotype.Service;
 import org.w3c.dom.*;
 
@@ -16,6 +17,7 @@ public class MessageHandling {
 
     public static String prepareAnswerToSender(String message) throws Exception{
         String messageForProcessing = message;
+
 
         Document doc =  Parser.convertStringToXMLDocument(messageForProcessing);
 

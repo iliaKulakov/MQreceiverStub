@@ -64,16 +64,32 @@ public class Parser {
                 "</config>";
 
 
-        Document doc = convertStringToXMLDocument(xmlStr);
+        //Added singleton fo choose template
+        BankSystemsDomain bankSystemsDomain = BankSystemsDomain.getInstance();
 
-        NodeList docElements = doc.getDocumentElement().getElementsByTagName("config");
+        if(bankSystemsDomain.getBankSystemOne()==1){
+            Document doc = convertStringToXMLDocument(xmlStr);
+            NodeList docElements = doc.getDocumentElement().getElementsByTagName("config");
 
-        for (int i = 0; i < docElements.getLength(); i++) {
-            Node elements = docElements.item(i);
-            NamedNodeMap attributes = elements.getAttributes();
-            attributes.getNamedItem("currency");
+            for (int i = 0; i < docElements.getLength(); i++) {
+                Node elements = docElements.item(i);
+                NamedNodeMap attributes = elements.getAttributes();
+                attributes.getNamedItem("currency");
 
-            System.out.println(doc.getFirstChild().getNodeName() + attributes.getNamedItem("currency"));
+                System.out.println(doc.getFirstChild().getNodeName() + attributes.getNamedItem("currency"));
+            }
+        }else{
+            Document doc = convertStringToXMLDocument(xmlStr1);
+            NodeList docElements = doc.getDocumentElement().getElementsByTagName("config");
+
+            for (int i = 0; i < docElements.getLength(); i++) {
+                Node elements = docElements.item(i);
+                NamedNodeMap attributes = elements.getAttributes();
+                attributes.getNamedItem("currency");
+
+                System.out.println(doc.getFirstChild().getNodeName() + attributes.getNamedItem("currency"));
+            }
+
         }
 
 

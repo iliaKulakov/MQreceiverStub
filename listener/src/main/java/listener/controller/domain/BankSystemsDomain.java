@@ -7,6 +7,7 @@ public class BankSystemsDomain {
 
     private int BankSystemOne = 1;
     private int BankSystemTwo = 1;
+    private static volatile BankSystemsDomain instance;
 
     public BankSystemsDomain() {
     }
@@ -15,6 +16,20 @@ public class BankSystemsDomain {
         BankSystemOne = bankSystemOne;
         BankSystemTwo = bankSystemTwo;
     }
+
+    public static BankSystemsDomain getInstance() {
+        BankSystemsDomain localInstance = instance;
+        if (localInstance == null) {
+            synchronized (BankSystemsDomain.class) {
+                localInstance = instance;
+                if (localInstance == null) {
+                    instance = localInstance = new BankSystemsDomain();
+                }
+            }
+        }
+        return localInstance;
+    }
+
 
     public int getBankSystemOne() {
         return BankSystemOne;
@@ -39,4 +54,6 @@ public class BankSystemsDomain {
                 ", BankSystemTwo=" + BankSystemTwo +
                 '}';
     }
+
+
 }
