@@ -1,5 +1,6 @@
 package listener.configuration;
 
+import listener.controller.Controller;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -26,5 +27,13 @@ public class AppConfig {
         factory.setConcurrency("3-10");
         return factory;
     }
+
+//    @Bean
+//    public Controller controller(){
+//        Controller controller = new Controller();
+//        return controller;
+//    }
+
+
 
 }
