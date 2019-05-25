@@ -1,5 +1,8 @@
 package listener.Parsing;
 
+import com.fasterxml.jackson.annotation.JacksonInject;
+import listener.controller.domain.BankSystemsDomain;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
@@ -21,6 +24,8 @@ import java.io.StringWriter;
 public class Parser {
 
     public static Document convertStringToXMLDocument(String xmlStr) {
+
+
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 
         DocumentBuilder builder = null;
@@ -47,6 +52,18 @@ public class Parser {
                 "    </item>\n" +
                 "</config>";
 
+
+        final String xmlStr1 = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                "<config>\n" +
+                "    <item date=\"February 2009\">\n" +
+                "        <mode>1</mode>\n" +
+                "        <reqamt>900</reqamt>\n" +
+                "        <currency>EUR</currency>\n" +
+                "        <interactive>Ok</interactive>\n" +
+                "    </item>\n" +
+                "</config>";
+
+
         Document doc = convertStringToXMLDocument(xmlStr);
 
         NodeList docElements = doc.getDocumentElement().getElementsByTagName("config");
@@ -60,12 +77,14 @@ public class Parser {
         }
 
 
-
-
     }
 
     public boolean canBeParse(Document doc) {
         Document docForParse = doc;
         return true;
     }
+
+
+
+
 }

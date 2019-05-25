@@ -1,5 +1,8 @@
 package listener.controller.domain;
 
+
+import org.springframework.context.annotation.Bean;
+
 public class BankSystemsDomain {
 
     private int BankSystemOne = 1;

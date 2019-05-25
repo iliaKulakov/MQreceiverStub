@@ -16,6 +16,7 @@ public class MessageHandling {
 
     public static String prepareAnswerToSender(String message) throws Exception{
         String messageForProcessing = message;
+
         Document doc =  Parser.convertStringToXMLDocument(messageForProcessing);
 
         doc.getDocumentElement().getElementsByTagName("currency").item(0).setTextContent("RUR");
