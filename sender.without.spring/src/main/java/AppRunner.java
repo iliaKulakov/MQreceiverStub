@@ -11,8 +11,8 @@ public class AppRunner {
 
     public static void main(String[] args) throws Exception {
 
-//        Sender sender = new Sender();
-//        Sender sender1 = new Sender();
+//        sender sender = new sender();
+//        sender sender1 = new sender();
 //        sender.sendMessageWithoutSpring();
 //        sender1.sendMessageWithoutSpring();
 

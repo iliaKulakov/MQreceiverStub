@@ -6,7 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class MQreceiverStubSenderTes {
 //
 //    @Autowired
-//    private Sender sender;
+//    private sender sender;
 //
 //    @Test
 //    public sendSuccess() {

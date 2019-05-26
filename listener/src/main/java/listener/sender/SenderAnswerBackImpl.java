@@ -1,12 +1,10 @@
-package listener.Sender;
+package listener.sender;
 
 
 import listener.service.MessageHandling;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
-
-import javax.jms.Queue;
 
 @Service
 public class SenderAnswerBackImpl implements  Sender {
