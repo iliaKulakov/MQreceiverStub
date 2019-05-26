@@ -2,6 +2,7 @@ package listener;
 
 import listener.controller.Controller;
 //import listener.controller.repo.BankSystemInfoRepository;
+import listener.controller.domain.BankSystemsDomain;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -19,7 +20,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @SpringBootApplication(scanBasePackages = "listener")
 @EnableJms
 @EnableJpaRepositories
-@EntityScan(value = "listener.controller.domain.BankSystemsDomain")
+//@EntityScan(value = "listener.controller.domain.BankSystemsDomain")
+@EntityScan(basePackageClasses= BankSystemsDomain.class)
 public class ListenerStub implements ApplicationRunner {
 
 
