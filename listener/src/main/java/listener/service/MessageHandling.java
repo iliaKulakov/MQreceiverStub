@@ -1,6 +1,6 @@
 package listener.service;
 
-import listener.Parsing.Parser;
+import listener.parsing.Parser;
 import listener.controller.domain.BankSystemsDomain;
 import org.springframework.stereotype.Service;
 import org.w3c.dom.*;
@@ -21,15 +21,15 @@ public class MessageHandling {
 
         Document doc =  Parser.convertStringToXMLDocument(messageForProcessing);
 
-        //test how to work logic with singleton and choose answer fo send message in jms queue
-        BankSystemsDomain bankSystemsDomain = BankSystemsDomain.getInstance();
-        if(bankSystemsDomain.getBankSystemOne()==1){
-            doc.getDocumentElement().getElementsByTagName("currency").item(0).setTextContent("RUR");
-        } else{
-            doc.getDocumentElement().getElementsByTagName("currency").item(0).setTextContent("USD");
-        }
+//        //test how to work logic with singleton and choose answer fo send message in jms queue
+//        BankSystemsDomain bankSystemsDomain = BankSystemsDomain.getInstance();
+//        if(bankSystemsDomain.getBankSystemOne()==1){
+//            doc.getDocumentElement().getElementsByTagName("currency").item(0).setTextContent("RUR");
+//        } else{
+//            doc.getDocumentElement().getElementsByTagName("currency").item(0).setTextContent("USD");
+//        }
 
-//        doc.getDocumentElement().getElementsByTagName("currency").item(0).setTextContent("RUR");
+        doc.getDocumentElement().getElementsByTagName("currency").item(0).setTextContent("RUR");
 
         NodeList docElements = doc.getDocumentElement().getElementsByTagName("config");
 

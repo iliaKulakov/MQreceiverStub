@@ -2,11 +2,8 @@ package listener.controller;
 
 
 import listener.controller.domain.BankSystemsDomain;
-import listener.controller.dto.CreateBankSystemInfo;
-import listener.controller.service.BankSystemOneService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Service;
+import listener.controller.dto.BankSystemInfoDto;
+//import listener.controller.repo.BankSystemInfoRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,27 +12,32 @@ import java.util.List;
 @RequestMapping("/configuration")
 public class Controller {
 
-    private BankSystemOneService bankSystemOneService;
+//    @ResponseBody
+//    @PostMapping
+//    public BankSystemsDomain createBankSystemONE(@RequestBody BankSystemInfoDto bankSystemInfoDto) {
+//
+//        int BankSystemOne = bankSystemInfoDto.getBankSystemOne();
+//        int BankSystemTwo = bankSystemInfoDto.getBankSystemOne();
+//
+//        BankSystemsDomain bankSystemsDomain = BankSystemsDomain.getInstance();
+//        bankSystemsDomain.setBankSystemOne(BankSystemOne);
+//        bankSystemsDomain.setBankSystemTwo(BankSystemTwo);
+//
+//        System.out.println(bankSystemsDomain.toString());
+//        return bankSystemsDomain;
+//
+//    }
 
-
-    @ResponseBody
-    @PostMapping
-    public BankSystemsDomain createBankSystemONE(@RequestBody CreateBankSystemInfo createBankSystemInfo) {
-
-        int BankSystemOne = createBankSystemInfo.getBankSystemOne();
-        int BankSystemTwo = createBankSystemInfo.getBankSystemOne();
-
-        BankSystemsDomain bankSystemsDomain = BankSystemsDomain.getInstance();
-        bankSystemsDomain.setBankSystemOne(BankSystemOne);
-        bankSystemsDomain.setBankSystemTwo(BankSystemTwo);
-//        BankSystemsDomain bankSystemsDomain = new BankSystemsDomain(BankSystemOne,BankSystemTwo);
-
-        System.out.println(bankSystemsDomain.toString());
-        return bankSystemsDomain;
-
-    }
-
-
-
+//    private BankSystemInfoRepository bankSystemInfoRepository;
+//
+//    @ResponseBody
+//    @GetMapping
+//    public List<BankSystemsDomain> getAllCategory() {
+//        List<BankSystemsDomain> bankSystemsDomains = bankSystemInfoRepository.findAll();
+//
+//
+//        return bankSystemsDomains;
+//
+//    }
 
 }

@@ -1,35 +1,44 @@
 package listener.controller.domain;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 
-import org.springframework.context.annotation.Bean;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+import java.math.BigDecimal;
 
-public class BankSystemsDomain {
+@Entity
+@Table(name = "configuration_info")
+public class BankSystemsDomain implements Serializable {
 
-    private int BankSystemOne = 1;
-    private int BankSystemTwo = 1;
-    private static volatile BankSystemsDomain instance;
+    @Id
+    @SequenceGenerator(name = "configuration_seq", sequenceName = "configuration_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "configuration_seq")
+    private long id;
+
+    @NotNull(message = "value can't be empty")
+    @Column(name = "bank_system_one_id")
+    private int BankSystemOne;
+
+    @Column(name = "bank_system_two_id")
+    private int BankSystemTwo;
+
 
     public BankSystemsDomain() {
     }
 
-    public BankSystemsDomain(int bankSystemOne, int bankSystemTwo) {
+    public BankSystemsDomain(@NotNull(message = "value can't be empty") int bankSystemOne, int bankSystemTwo) {
         BankSystemOne = bankSystemOne;
         BankSystemTwo = bankSystemTwo;
     }
 
-    public static BankSystemsDomain getInstance() {
-        BankSystemsDomain localInstance = instance;
-        if (localInstance == null) {
-            synchronized (BankSystemsDomain.class) {
-                localInstance = instance;
-                if (localInstance == null) {
-                    instance = localInstance = new BankSystemsDomain();
-                }
-            }
-        }
-        return localInstance;
+    public long getId() {
+        return id;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public int getBankSystemOne() {
         return BankSystemOne;
@@ -46,14 +55,4 @@ public class BankSystemsDomain {
     public void setBankSystemTwo(int bankSystemTwo) {
         BankSystemTwo = bankSystemTwo;
     }
-
-    @Override
-    public String toString() {
-        return "BankSystemsDomain{" +
-                "BankSystemOne=" + BankSystemOne +
-                ", BankSystemTwo=" + BankSystemTwo +
-                '}';
-    }
-
-
 }

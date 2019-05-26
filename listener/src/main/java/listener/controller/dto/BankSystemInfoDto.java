@@ -2,12 +2,12 @@ package listener.controller.dto;
 
 import java.io.Serializable;
 
-public class CreateBankSystemInfo implements Serializable {
+public class BankSystemInfoDto implements Serializable {
 
     private int BankSystemOne = 1;
     private int BankSystemTwo = 1;
 
-    public CreateBankSystemInfo() {
+    public BankSystemInfoDto() {
     }
 
     public int getBankSystemOne() {
