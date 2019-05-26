@@ -13,7 +13,7 @@ import org.springframework.jms.annotation.EnableJms;
 @Configuration
 @SpringBootApplication
 @EnableJms
-public class MQreceiverStub implements ApplicationRunner {
+public class MSenderStub implements ApplicationRunner {
 
     @Autowired
     private Sender sender;
@@ -22,12 +22,12 @@ public class MQreceiverStub implements ApplicationRunner {
     private Consumer consumer;
 
     public static void main(String[] args) throws Exception {
-        SpringApplication.run(MQreceiverStub.class, args);
+        SpringApplication.run(MSenderStub.class, args);
     }
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-//        sender.sendMessage();
+        sender.sendMessage();
 //        sender.sendSecondSystemMessage();
 //        consumer.listener();
 

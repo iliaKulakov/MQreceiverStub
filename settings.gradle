@@ -1,2 +1,9 @@
 rootProject.name = 'application'
 
+include 'sender'
+include 'listener'
+include 'sender'
+include 'activeMqStub'
+include 'sender.without.spring'
+include 'port.listener'
+

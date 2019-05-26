@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+}
+
+group 'com.exampleapp'
+version '0.0.1'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    compile("com.fasterxml.jackson.core:jackson-databind:2.9.8")
+    compile group: 'org.apache.activemq', name: 'activemq-all', version: '5.15.9'
+    compile group: 'commons-logging', name: 'commons-logging', version: '1.2'
+}
