@@ -27,9 +27,6 @@ public class MQreceiverStub implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-//        sender.sendMessage();
-//        sender.sendSecondSystemMessage();
-//        consumer.io.github.mqrecieverstub.listener();
 
     }
 
