@@ -28,67 +28,64 @@ public class Parser {
         return null;
     }
 
-    public static void main(String[] args) {
-
-//        final String xmlStr = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-//                "<config>\n" +
-//                "    <item date=\"January 2009\">\n" +
-//                "        <mode>1</mode>\n" +
-//                "        <reqamt>900</reqamt>\n" +
-//                "        <currency>EUR</currency>\n" +
-//                "        <interactive>Ok</interactive>\n" +
-//                "    </item>\n" +
-//                "</config>";
+//    public static void main(String[] args) {
+//
+////        final String xmlStr = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+////                "<config>\n" +
+////                "    <item date=\"January 2009\">\n" +
+////                "        <mode>1</mode>\n" +
+////                "        <reqamt>900</reqamt>\n" +
+////                "        <currency>EUR</currency>\n" +
+////                "        <interactive>Ok</interactive>\n" +
+////                "    </item>\n" +
+////                "</config>";
+////
+////
+////        final String xmlStr1 = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+////                "<config>\n" +
+////                "    <item date=\"February 2009\">\n" +
+////                "        <mode>1</mode>\n" +
+////                "        <reqamt>900</reqamt>\n" +
+////                "        <currency>EUR</currency>\n" +
+////                "        <interactive>Ok</interactive>\n" +
+////                "    </item>\n" +
+////                "</config>";
+////
+////
+////
+////        BankSystemsDomain bankSystemsDomain = BankSystemsDomain.getInstance();
+////
+////        if(bankSystemsDomain.getBankSystemOne()==1){
+////            Document doc = convertStringToXMLDocument(xmlStr);
+////            NodeList docElements = doc.getDocumentElement().getElementsByTagName("config");
+////
+////            for (int i = 0; i < docElements.getLength(); i++) {
+////                Node elements = docElements.item(i);
+////                NamedNodeMap attributes = elements.getAttributes();
+////                attributes.getNamedItem("currency");
+////
+////                System.out.println(doc.getFirstChild().getNodeName() + attributes.getNamedItem("currency"));
+////            }
+////        }else{
+////            Document doc = convertStringToXMLDocument(xmlStr1);
+////            NodeList docElements = doc.getDocumentElement().getElementsByTagName("config");
+////
+////            for (int i = 0; i < docElements.getLength(); i++) {
+////                Node elements = docElements.item(i);
+////                NamedNodeMap attributes = elements.getAttributes();
+////                attributes.getNamedItem("currency");
+////
+////                System.out.println(doc.getFirstChild().getNodeName() + attributes.getNamedItem("currency"));
+////            }
+////
+////        }
 //
 //
-//        final String xmlStr1 = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-//                "<config>\n" +
-//                "    <item date=\"February 2009\">\n" +
-//                "        <mode>1</mode>\n" +
-//                "        <reqamt>900</reqamt>\n" +
-//                "        <currency>EUR</currency>\n" +
-//                "        <interactive>Ok</interactive>\n" +
-//                "    </item>\n" +
-//                "</config>";
-//
-//
-//
-//        BankSystemsDomain bankSystemsDomain = BankSystemsDomain.getInstance();
-//
-//        if(bankSystemsDomain.getBankSystemOne()==1){
-//            Document doc = convertStringToXMLDocument(xmlStr);
-//            NodeList docElements = doc.getDocumentElement().getElementsByTagName("config");
-//
-//            for (int i = 0; i < docElements.getLength(); i++) {
-//                Node elements = docElements.item(i);
-//                NamedNodeMap attributes = elements.getAttributes();
-//                attributes.getNamedItem("currency");
-//
-//                System.out.println(doc.getFirstChild().getNodeName() + attributes.getNamedItem("currency"));
-//            }
-//        }else{
-//            Document doc = convertStringToXMLDocument(xmlStr1);
-//            NodeList docElements = doc.getDocumentElement().getElementsByTagName("config");
-//
-//            for (int i = 0; i < docElements.getLength(); i++) {
-//                Node elements = docElements.item(i);
-//                NamedNodeMap attributes = elements.getAttributes();
-//                attributes.getNamedItem("currency");
-//
-//                System.out.println(doc.getFirstChild().getNodeName() + attributes.getNamedItem("currency"));
-//            }
-//
-//        }
-
-
-    }
+//    }
 
     public boolean canBeParse(Document doc) {
         Document docForParse = doc;
         return true;
     }
-
-
-
 
 }
