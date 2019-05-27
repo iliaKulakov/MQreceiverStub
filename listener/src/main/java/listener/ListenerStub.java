@@ -17,7 +17,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableJms
 @EnableJpaRepositories
 //@EntityScan(value = "listener.controller.domain.BankSystemsDomain")
-@EntityScan(basePackageClasses= BankSystemsDomain.class)
+@EntityScan(basePackageClasses = BankSystemsDomain.class)
 public class ListenerStub implements ApplicationRunner {
 
     public static void main(String[] args) throws Exception {

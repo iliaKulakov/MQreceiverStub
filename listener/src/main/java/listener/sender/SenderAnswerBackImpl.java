@@ -7,20 +7,17 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SenderAnswerBackImpl implements  Sender {
-
-    @Autowired
-    private JmsTemplate jmsTemplate;
-
+public class SenderAnswerBackImpl implements Sender {
 
     @Autowired
     MessageHandling messageHandling;
-
+    @Autowired
+    private JmsTemplate jmsTemplate;
     private String queue = "mq.xml.in";
 
 
     @Override
-    public void sendMessage(String message) throws Exception{
+    public void sendMessage(String message) throws Exception {
 
         String messageAnswer = messageHandling.prepareAnswerToSender(message);
 

@@ -15,11 +15,11 @@ import java.io.StringWriter;
 @Service
 public class MessageHandling {
 
-    public static String prepareAnswerToSender(String message) throws Exception{
+    public static String prepareAnswerToSender(String message) throws Exception {
         String messageForProcessing = message;
 
 
-        Document doc =  Parser.convertStringToXMLDocument(messageForProcessing);
+        Document doc = Parser.convertStringToXMLDocument(messageForProcessing);
 
 //        //test how to work logic with singleton and choose answer fo send message in jms queue
 //        BankSystemsDomain bankSystemsDomain = BankSystemsDomain.getInstance();

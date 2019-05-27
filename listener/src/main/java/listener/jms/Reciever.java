@@ -14,7 +14,7 @@ public class Reciever {
     @JmsListener(destination = "mq.xml.out")
     public void listenerWithArg(String message) throws Exception {
         System.out.println("Received Message: " + message);
-          senderAnswerBack.sendMessage(message);
+        senderAnswerBack.sendMessage(message);
 
     }
 

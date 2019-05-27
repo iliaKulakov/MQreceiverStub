@@ -23,14 +23,9 @@ public class Controller {
 
     @ResponseBody
     @PostMapping
-    public BankSystemsDomain createBankSystemDatabaseRecord(BankSystemInfoDto bankSystemInfoDto){
+    public BankSystemsDomain createBankSystemDatabaseRecord(BankSystemInfoDto bankSystemInfoDto) {
 
-//        int bankSystemOne = this.bankSystemInfoRepository.findBankSystemsDomainById(bankSystemInfoDto.getBankSystemOne());
-//        int bankSystemTwo = this.bankSystemInfoRepository.findBankSystemsDomainById(bankSystemInfoDto.getBankSystemTwo());
-//        BankSystemsDomain bankSystemsDomain = new BankSystemsDomain(bankSystemOne,bankSystemTwo);
-//        return bankSystemsDomain;
-
-        BankSystemsDomain bankSystemsDomain = new BankSystemsDomain(bankSystemInfoDto.getBankSystemOne(),bankSystemInfoDto.getBankSystemTwo());
+        BankSystemsDomain bankSystemsDomain = new BankSystemsDomain(bankSystemInfoDto.getBankSystemOne(), bankSystemInfoDto.getBankSystemTwo());
         bankSystemsDomain = bankSystemInfoRepository.save(bankSystemsDomain);
         return bankSystemsDomain;
 
