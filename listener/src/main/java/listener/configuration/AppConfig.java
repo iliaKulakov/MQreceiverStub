@@ -28,10 +28,4 @@ public class AppConfig {
         return factory;
     }
 
-//    @Bean
-//    public Controller controller(){
-//        Controller controller = new Controller();
-//        return controller;
-//    }
-
 }

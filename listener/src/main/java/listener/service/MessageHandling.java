@@ -21,14 +21,6 @@ public class MessageHandling {
 
         Document doc = Parser.convertStringToXMLDocument(messageForProcessing);
 
-//        //test how to work logic with singleton and choose answer fo send message in jms queue
-//        BankSystemsDomain bankSystemsDomain = BankSystemsDomain.getInstance();
-//        if(bankSystemsDomain.getBankSystemOne()==1){
-//            doc.getDocumentElement().getElementsByTagName("currency").item(0).setTextContent("RUR");
-//        } else{
-//            doc.getDocumentElement().getElementsByTagName("currency").item(0).setTextContent("USD");
-//        }
-
         doc.getDocumentElement().getElementsByTagName("currency").item(0).setTextContent("RUR");
 
         NodeList docElements = doc.getDocumentElement().getElementsByTagName("config");
@@ -49,21 +41,4 @@ public class MessageHandling {
         return output;
 
     }
-
-
-//    public static void main(String args[]) throws Exception{
-//
-//        final String message = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-//                "<config>\n" +
-//                "    <item date=\"January 2009\">\n" +
-//                "        <mode>1</mode>\n" +
-//                "        <reqamt>900</reqamt>\n" +
-//                "        <currency>EUR</currency>\n" +
-//                "        <interactive>Ok</interactive>\n" +
-//                "    </item>\n" +
-//                "</config>";
-//        prepareAnswerToSender(message);
-//
-//
-//    }
 }
