@@ -1,4 +1,4 @@
-package listener.sender;
+package io.github.mqrecieverstub.listener.sender;
 
 public interface Sender {
 

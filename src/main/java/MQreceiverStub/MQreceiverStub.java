@@ -29,7 +29,7 @@ public class MQreceiverStub implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
 //        sender.sendMessage();
 //        sender.sendSecondSystemMessage();
-//        consumer.listener();
+//        consumer.io.github.mqrecieverstub.listener();
 
     }
 

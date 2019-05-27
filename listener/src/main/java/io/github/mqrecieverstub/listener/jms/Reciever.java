@@ -1,6 +1,6 @@
-package listener.jms;
+package io.github.mqrecieverstub.listener.jms;
 
-import listener.sender.SenderAnswerBackImpl;
+import io.github.mqrecieverstub.listener.sender.SenderAnswerBackImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;

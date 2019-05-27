@@ -1,6 +1,5 @@
-package listener.configuration;
+package io.github.mqrecieverstub.listener.configuration;
 
-import listener.controller.Controller;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

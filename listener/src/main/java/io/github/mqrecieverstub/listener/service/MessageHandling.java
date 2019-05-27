@@ -1,7 +1,6 @@
-package listener.service;
+package io.github.mqrecieverstub.listener.service;
 
-import listener.parsing.Parser;
-import listener.controller.domain.BankSystemsDomain;
+import io.github.mqrecieverstub.listener.parsing.Parser;
 import org.springframework.stereotype.Service;
 import org.w3c.dom.*;
 

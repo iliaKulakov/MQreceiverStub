@@ -1,7 +1,7 @@
-package listener.sender;
+package io.github.mqrecieverstub.listener.sender;
 
 
-import listener.service.MessageHandling;
+import io.github.mqrecieverstub.listener.service.MessageHandling;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;

@@ -1,13 +1,12 @@
-package listener.controller;
+package io.github.mqrecieverstub.listener.controller;
 
 
-import listener.controller.domain.BankSystemsDomain;
-import listener.controller.dto.BankSystemInfoDto;
-import listener.controller.repo.BankSystemInfoRepository;
+import io.github.mqrecieverstub.listener.controller.domain.BankSystemsDomain;
+import io.github.mqrecieverstub.listener.controller.dto.BankSystemInfoDto;
+import io.github.mqrecieverstub.listener.controller.repo.BankSystemInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.Column;
 import java.util.List;
 
 @RestController

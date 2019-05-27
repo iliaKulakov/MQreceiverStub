@@ -1,4 +1,4 @@
-package listener.controller.dto;
+package io.github.mqrecieverstub.listener.controller.dto;
 
 import java.io.Serializable;
 

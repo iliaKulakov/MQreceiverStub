@@ -1,4 +1,4 @@
-package listener.parsing;
+package io.github.mqrecieverstub.listener.parsing;
 
 import org.springframework.stereotype.Service;
 import org.w3c.dom.Document;

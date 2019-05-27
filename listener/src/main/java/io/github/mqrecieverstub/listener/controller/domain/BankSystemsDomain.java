@@ -1,11 +1,8 @@
-package listener.controller.domain;
-
-import org.springframework.boot.autoconfigure.domain.EntityScan;
+package io.github.mqrecieverstub.listener.controller.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 @Entity
 @Table(name = "configuration_info")
