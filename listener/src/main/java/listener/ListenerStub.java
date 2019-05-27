@@ -1,9 +1,6 @@
 package listener;
 
-import listener.controller.Controller;
-//import listener.controller.repo.BankSystemInfoRepository;
 import listener.controller.domain.BankSystemsDomain;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
@@ -15,7 +12,6 @@ import org.springframework.jms.annotation.EnableJms;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 
-@EnableWebMvc
 @Configuration
 @SpringBootApplication(scanBasePackages = "listener")
 @EnableJms
@@ -24,17 +20,15 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EntityScan(basePackageClasses= BankSystemsDomain.class)
 public class ListenerStub implements ApplicationRunner {
 
-
     public static void main(String[] args) throws Exception {
         SpringApplication.run(ListenerStub.class, args);
     }
-
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
         System.out.println("Listener working now ");
 
-    }
 
+    }
 
 }
