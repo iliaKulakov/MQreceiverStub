@@ -3,41 +3,47 @@ package listener.controller;
 
 import listener.controller.domain.BankSystemsDomain;
 import listener.controller.dto.BankSystemInfoDto;
-//import listener.controller.repo.BankSystemInfoRepository;
+import listener.controller.repo.BankSystemInfoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.Column;
 import java.util.List;
 
 @RestController
 @RequestMapping("/configuration")
 public class Controller {
 
-//    @ResponseBody
-//    @PostMapping
-//    public BankSystemsDomain createBankSystemONE(@RequestBody BankSystemInfoDto bankSystemInfoDto) {
-//
-//        int BankSystemOne = bankSystemInfoDto.getBankSystemOne();
-//        int BankSystemTwo = bankSystemInfoDto.getBankSystemOne();
-//
-//        BankSystemsDomain bankSystemsDomain = BankSystemsDomain.getInstance();
-//        bankSystemsDomain.setBankSystemOne(BankSystemOne);
-//        bankSystemsDomain.setBankSystemTwo(BankSystemTwo);
-//
-//        System.out.println(bankSystemsDomain.toString());
-//        return bankSystemsDomain;
-//
-//    }
+    private BankSystemInfoRepository bankSystemInfoRepository;
 
-//    private BankSystemInfoRepository bankSystemInfoRepository;
-//
-//    @ResponseBody
-//    @GetMapping
-//    public List<BankSystemsDomain> getAllCategory() {
-//        List<BankSystemsDomain> bankSystemsDomains = bankSystemInfoRepository.findAll();
-//
-//
-//        return bankSystemsDomains;
-//
-//    }
+    @Autowired
+    public Controller(BankSystemInfoRepository bankSystemInfoRepository) {
+        this.bankSystemInfoRepository = bankSystemInfoRepository;
+    }
+
+    @ResponseBody
+    @PostMapping
+    public BankSystemsDomain createBankSystemDatabaseRecord(BankSystemInfoDto bankSystemInfoDto){
+
+//        int bankSystemOne = this.bankSystemInfoRepository.findBankSystemsDomainById(bankSystemInfoDto.getBankSystemOne());
+//        int bankSystemTwo = this.bankSystemInfoRepository.findBankSystemsDomainById(bankSystemInfoDto.getBankSystemTwo());
+//        BankSystemsDomain bankSystemsDomain = new BankSystemsDomain(bankSystemOne,bankSystemTwo);
+//        return bankSystemsDomain;
+
+        BankSystemsDomain bankSystemsDomain = new BankSystemsDomain(bankSystemInfoDto.getBankSystemOne(),bankSystemInfoDto.getBankSystemTwo());
+        bankSystemsDomain = bankSystemInfoRepository.save(bankSystemsDomain);
+        return bankSystemsDomain;
+
+    }
+
+    @ResponseBody
+    @GetMapping
+    public List<BankSystemsDomain> getAllBankSystems() {
+        List<BankSystemsDomain> bankSystemsDomains = bankSystemInfoRepository.findAll();
+
+        return bankSystemsDomains;
+
+    }
+
 
 }
