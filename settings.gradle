@@ -1,4 +1,4 @@
-rootProject.name = 'application'
+rootProject.name = 'MQrecieverStub'
 
 include 'sender'
 include 'listener'
