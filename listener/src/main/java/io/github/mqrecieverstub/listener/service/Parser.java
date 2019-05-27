@@ -1,4 +1,4 @@
-package io.github.mqrecieverstub.listener.parsing;
+package io.github.mqrecieverstub.listener.service;
 
 import org.springframework.stereotype.Service;
 import org.w3c.dom.Document;
@@ -11,19 +11,18 @@ import java.io.StringReader;
 @Service
 public class Parser {
 
-    public static Document convertStringToXMLDocument(String xmlStr) {
+    Document convertStringToXMLDocument(String xmlStr) {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-
-        DocumentBuilder builder = null;
+        DocumentBuilder builder;
+        Document resultDocument = null;
         try {
             builder = factory.newDocumentBuilder();
 
-            Document doc = builder.parse(new InputSource(new StringReader(xmlStr)));
-            return doc;
+            resultDocument =  builder.parse(new InputSource(new StringReader(xmlStr)));
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+        return resultDocument;
     }
 
 }

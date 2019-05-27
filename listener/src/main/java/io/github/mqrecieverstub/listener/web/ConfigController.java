@@ -1,9 +1,9 @@
-package io.github.mqrecieverstub.listener.controller;
+package io.github.mqrecieverstub.listener.web;
 
 
-import io.github.mqrecieverstub.listener.controller.domain.BankSystemsDomain;
-import io.github.mqrecieverstub.listener.controller.dto.BankSystemInfoDto;
-import io.github.mqrecieverstub.listener.controller.repo.BankSystemInfoRepository;
+import io.github.mqrecieverstub.listener.domain.BankSystemsDomain;
+import io.github.mqrecieverstub.listener.dto.BankSystemInfoDto;
+import io.github.mqrecieverstub.listener.repository.BankSystemInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,12 +11,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/configuration")
-public class Controller {
+public class ConfigController {
 
     private BankSystemInfoRepository bankSystemInfoRepository;
 
     @Autowired
-    public Controller(BankSystemInfoRepository bankSystemInfoRepository) {
+    public ConfigController(BankSystemInfoRepository bankSystemInfoRepository) {
         this.bankSystemInfoRepository = bankSystemInfoRepository;
     }
 
@@ -27,7 +27,6 @@ public class Controller {
         BankSystemsDomain bankSystemsDomain = new BankSystemsDomain(bankSystemInfoDto.getBankSystemOne(), bankSystemInfoDto.getBankSystemTwo());
         bankSystemsDomain = bankSystemInfoRepository.save(bankSystemsDomain);
         return bankSystemsDomain;
-
     }
 
     @ResponseBody
@@ -36,8 +35,5 @@ public class Controller {
         List<BankSystemsDomain> bankSystemsDomains = bankSystemInfoRepository.findAll();
 
         return bankSystemsDomains;
-
     }
-
-
 }

@@ -1,4 +1,4 @@
-package io.github.mqrecieverstub.listener.controller.domain;
+package io.github.mqrecieverstub.listener.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
