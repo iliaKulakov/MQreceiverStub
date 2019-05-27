@@ -2,12 +2,17 @@ package listener.controller.dto;
 
 import java.io.Serializable;
 
-public class CreateBankSystemInfo implements Serializable {
+public class BankSystemInfoDto implements Serializable {
 
-    private int BankSystemOne = 1;
-    private int BankSystemTwo = 1;
+    private int BankSystemOne;
+    private int BankSystemTwo;
 
-    public CreateBankSystemInfo() {
+    public BankSystemInfoDto(int bankSystemOne, int bankSystemTwo) {
+        BankSystemOne = bankSystemOne;
+        BankSystemTwo = bankSystemTwo;
+    }
+
+    public BankSystemInfoDto() {
     }
 
     public int getBankSystemOne() {
@@ -25,4 +30,5 @@ public class CreateBankSystemInfo implements Serializable {
     public void setBankSystemTwo(int bankSystemTwo) {
         BankSystemTwo = bankSystemTwo;
     }
+
 }

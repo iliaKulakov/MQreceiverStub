@@ -1,10 +1,8 @@
 package listener.jms;
 
-import listener.Sender.SenderAnswerBackImpl;
-import listener.service.MessageHandling;
+import listener.sender.SenderAnswerBackImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
-import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Component;
 
 @Component

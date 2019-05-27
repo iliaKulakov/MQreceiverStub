@@ -1,4 +1,4 @@
-package listener.Sender;
+package listener.sender;
 
 public interface Sender {
 
