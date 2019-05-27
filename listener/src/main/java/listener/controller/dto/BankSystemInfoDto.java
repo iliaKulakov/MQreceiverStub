@@ -4,8 +4,13 @@ import java.io.Serializable;
 
 public class BankSystemInfoDto implements Serializable {
 
-    private int BankSystemOne = 1;
-    private int BankSystemTwo = 1;
+    private int BankSystemOne;
+    private int BankSystemTwo;
+
+    public BankSystemInfoDto(int bankSystemOne, int bankSystemTwo) {
+        BankSystemOne = bankSystemOne;
+        BankSystemTwo = bankSystemTwo;
+    }
 
     public BankSystemInfoDto() {
     }
@@ -25,4 +30,5 @@ public class BankSystemInfoDto implements Serializable {
     public void setBankSystemTwo(int bankSystemTwo) {
         BankSystemTwo = bankSystemTwo;
     }
+
 }

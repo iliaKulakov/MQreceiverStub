@@ -23,7 +23,6 @@ public class BankSystemsDomain implements Serializable {
     @Column(name = "bank_system_two_id")
     private int BankSystemTwo;
 
-
     public BankSystemsDomain() {
     }
 
