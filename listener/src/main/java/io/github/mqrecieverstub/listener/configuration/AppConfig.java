@@ -1,17 +1,26 @@
-package listener.configuration;
+package io.github.mqrecieverstub.listener.configuration;
 
-import listener.controller.Controller;
+import io.github.mqrecieverstub.listener.jms.MessageProcessingListener;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
+import org.springframework.jms.config.SimpleJmsListenerEndpoint;
+import org.springframework.jms.listener.DefaultMessageListenerContainer;
 
+@EnableJms
+@EnableJpaRepositories(basePackages = "io.github.mqrecieverstub.listener.repository")
 @Configuration
 public class AppConfig {
 
     @Value("${spring.activemq.broker-url}")
     private String brokerUrl;
+
+    @Value("${application.default.queue}")
+    private String defaultQueue;
 
     @Bean
     public ActiveMQConnectionFactory activeMQConnectionFactory() {
@@ -28,10 +37,15 @@ public class AppConfig {
         return factory;
     }
 
-//    @Bean
-//    public Controller controller(){
-//        Controller controller = new Controller();
-//        return controller;
-//    }
+    @Bean
+    public DefaultMessageListenerContainer jmsMessageListenerContainer() {
+        SimpleJmsListenerEndpoint endpoint =
+                new SimpleJmsListenerEndpoint();
+        endpoint.setMessageListener(new MessageProcessingListener());
+        endpoint.setDestination(defaultQueue);
+
+        return jmsListenerContainerFactory()
+                .createListenerContainer(endpoint);
+    }
 
 }
