@@ -2,8 +2,4 @@ rootProject.name = 'MQrecieverStub'
 
 include 'sender'
 include 'listener'
-include 'sender'
-include 'activeMqStub'
-include 'sender.without.spring'
-include 'port.listener'
 

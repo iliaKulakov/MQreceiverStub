@@ -18,7 +18,7 @@ public class Parser {
         try {
             builder = factory.newDocumentBuilder();
 
-            resultDocument =  builder.parse(new InputSource(new StringReader(xmlStr)));
+            resultDocument = builder.parse(new InputSource(new StringReader(xmlStr)));
         } catch (Exception e) {
             e.printStackTrace();
         }

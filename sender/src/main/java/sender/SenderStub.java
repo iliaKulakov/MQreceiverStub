@@ -21,7 +21,7 @@ public class SenderStub implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
-        String xmlMessage =  "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+        String xmlMessage = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                 "<config>\n" +
                 "    <item date=\"January 2009\">\n" +
                 "        <mode>1</mode>\n" +
