@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 @Service
 public class ConfigHandling {
@@ -17,15 +18,13 @@ public class ConfigHandling {
         this.bankSystemInfoRepository = bankSystemInfoRepository;
     }
 
-    public List<BankSystemsDomain> getConfigInfoFrom(){
+    public void getConfigInfoFromDb(){
         List<BankSystemsDomain> bankSystemsDomains = bankSystemInfoRepository.findAll();
-        bankSystemInfoRepository.
-            return bankSystemsDomains;
+        Stream bankSystemDomainsStream = bankSystemsDomains.stream();
+        bankSystemDomainsStream.max(bankSystemInfoRepository.findBankSystemsDomainById()).toString();
+        System.out.println(bankSystemDomainsStream);
     }
 
-    public void getBankSystemOneInfoFromDatabase(){
 
-
-    }
 
 }

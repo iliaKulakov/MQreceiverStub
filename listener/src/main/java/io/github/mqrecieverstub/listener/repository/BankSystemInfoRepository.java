@@ -12,8 +12,5 @@ public interface BankSystemInfoRepository extends JpaRepository<BankSystemsDomai
 
     BankSystemsDomain findBankSystemsDomainById(int id);
 
-//    @Query("select * from configuration_info e where e.salary > :salary")
-    BankSystemsDomain findBankSystemsDomainByIdorOrderByIdDesc(Long id);
-    BankSystemsDomain findBankSystemsDomainByIdorOrderByIdDesc(int id);
 }
 
