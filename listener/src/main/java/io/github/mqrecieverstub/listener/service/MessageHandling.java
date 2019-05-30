@@ -13,6 +13,7 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import java.io.ObjectInputFilter;
 import java.io.StringWriter;
 
 @Service
@@ -20,17 +21,13 @@ public class MessageHandling {
 
     private final Parser parser;
 
-    private ConfigHandling configHandling;
+    private ConfigProcessing configProcessing;
 
-//    @Autowired
-//    public MessageHandling(Parser parser) {
-//        this.parser = parser;
-//    }
 
     @Autowired
-    public MessageHandling(Parser parser, ConfigHandling configHandling) {
+    public MessageHandling(Parser parser, ConfigProcessing configProcessing) {
         this.parser = parser;
-        this.configHandling = configHandling;
+        this.configProcessing = configProcessing;
     }
 
     public String prepareAnswerToSender(String messageForProcessing) throws TransformerException {
@@ -38,7 +35,7 @@ public class MessageHandling {
         Document doc = parser.convertStringToXMLDocument(messageForProcessing);
 
 
-        if (configHandling.getConfigInfoFromDb().getBankSystemOne() == 0) {
+        if (configProcessing.getConfigInfoFromDb().getBankSystemOne() == 0) {
 
             doc.getDocumentElement().getElementsByTagName("currency").item(0).setTextContent("JAR");
         } else {

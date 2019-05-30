@@ -10,12 +10,11 @@ import java.util.List;
 import java.util.stream.Stream;
 
 @Service
-public class ConfigHandling {
-
+public class ConfigProcessing {
     private BankSystemInfoRepository bankSystemInfoRepository;
 
     @Autowired
-    public ConfigHandling(BankSystemInfoRepository bankSystemInfoRepository) {
+    public ConfigProcessing(BankSystemInfoRepository bankSystemInfoRepository) {
         this.bankSystemInfoRepository = bankSystemInfoRepository;
     }
 
@@ -31,6 +30,4 @@ public class ConfigHandling {
 
         return maxBankSystemDomainfromDb;
     }
-
-
 }
