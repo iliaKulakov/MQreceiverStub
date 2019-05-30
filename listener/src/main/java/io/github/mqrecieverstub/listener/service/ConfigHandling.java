@@ -19,19 +19,18 @@ public class ConfigHandling {
         this.bankSystemInfoRepository = bankSystemInfoRepository;
     }
 
-    public BankSystemsDomain getConfigInfoFromDb(){
+    public BankSystemsDomain getConfigInfoFromDb() {
         List<BankSystemsDomain> bankSystemsDomains = bankSystemInfoRepository.findAll();
         Stream bankSystemDomainsStream = bankSystemsDomains.stream();
 
-        Comparator<BankSystemsDomain> comparator = Comparator.comparing( BankSystemsDomain::getId );
+        Comparator<BankSystemsDomain> comparator = Comparator.comparing(BankSystemsDomain::getId);
 
         BankSystemsDomain maxBankSystemDomainfromDb = (BankSystemsDomain) bankSystemDomainsStream
-                                                                    .max(comparator)
-                                                                    .get();
+                .max(comparator)
+                .get();
 
         return maxBankSystemDomainfromDb;
     }
-
 
 
 }

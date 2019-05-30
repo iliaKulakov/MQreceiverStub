@@ -10,7 +10,6 @@ public class ListenerStub {
         SpringApplication.run(ListenerStub.class, args);
 
 
-
     }
 
 }

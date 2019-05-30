@@ -1,6 +1,5 @@
 package io.github.mqrecieverstub.listener.service;
 
-import io.github.mqrecieverstub.listener.domain.BankSystemsDomain;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.w3c.dom.Document;
@@ -39,11 +38,12 @@ public class MessageHandling {
         Document doc = parser.convertStringToXMLDocument(messageForProcessing);
 
 
-       if(configHandling.getConfigInfoFromDb().getBankSystemOne() ==0){
+        if (configHandling.getConfigInfoFromDb().getBankSystemOne() == 0) {
 
-        doc.getDocumentElement().getElementsByTagName("currency").item(0).setTextContent("JAR");} else
-       {doc.getDocumentElement().getElementsByTagName("currency").item(0).setTextContent("USD");
-                  }
+            doc.getDocumentElement().getElementsByTagName("currency").item(0).setTextContent("JAR");
+        } else {
+            doc.getDocumentElement().getElementsByTagName("currency").item(0).setTextContent("USD");
+        }
 
         NodeList docElements = doc.getDocumentElement().getElementsByTagName("config");
 
