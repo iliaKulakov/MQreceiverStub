@@ -9,6 +9,8 @@ public class ListenerStub {
     public static void main(String[] args) {
         SpringApplication.run(ListenerStub.class, args);
 
+
+
     }
 
 }

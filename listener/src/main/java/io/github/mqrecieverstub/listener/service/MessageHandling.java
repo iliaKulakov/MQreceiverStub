@@ -1,5 +1,6 @@
 package io.github.mqrecieverstub.listener.service;
 
+import io.github.mqrecieverstub.listener.domain.BankSystemsDomain;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.w3c.dom.Document;
@@ -20,16 +21,29 @@ public class MessageHandling {
 
     private final Parser parser;
 
+    private ConfigHandling configHandling;
+
+//    @Autowired
+//    public MessageHandling(Parser parser) {
+//        this.parser = parser;
+//    }
+
     @Autowired
-    public MessageHandling(Parser parser) {
+    public MessageHandling(Parser parser, ConfigHandling configHandling) {
         this.parser = parser;
+        this.configHandling = configHandling;
     }
 
     public String prepareAnswerToSender(String messageForProcessing) throws TransformerException {
 
         Document doc = parser.convertStringToXMLDocument(messageForProcessing);
 
-        doc.getDocumentElement().getElementsByTagName("currency").item(0).setTextContent("RUR");
+
+       if(configHandling.getConfigInfoFromDb().getBankSystemOne() ==0){
+
+        doc.getDocumentElement().getElementsByTagName("currency").item(0).setTextContent("JAR");} else
+       {doc.getDocumentElement().getElementsByTagName("currency").item(0).setTextContent("USD");
+                  }
 
         NodeList docElements = doc.getDocumentElement().getElementsByTagName("config");
 
