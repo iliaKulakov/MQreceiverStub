@@ -20,11 +20,13 @@ public class ConfigProcessing {
 
     BankSystemsDomain getConfigInfoFromDb() {
         List<BankSystemsDomain> bankSystemsDomains = bankSystemInfoRepository.findAll();
-        Stream bankSystemDomainsStream = bankSystemsDomains.stream();
+        //TODO: Тут надо сразу определять тип
+        Stream<BankSystemsDomain> bankSystemDomainsStream = bankSystemsDomains.stream();
 
         Comparator<BankSystemsDomain> comparator = Comparator.comparing(BankSystemsDomain::getId);
 
-        return (BankSystemsDomain) bankSystemDomainsStream
+        //TODO: Тут возращается optional. Почему ты сразу возращаешь объект без проверки?
+        return bankSystemDomainsStream
                 .max(comparator)
                 .get();
     }
