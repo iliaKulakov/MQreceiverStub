@@ -17,13 +17,22 @@ public class MessageProcessingListener implements MessageListener {
     @Autowired
     private SenderAnswerBackImpl senderAnswerBack;
 
+
     @Override
+    @JmsListener(destination = "mq.xml.out")
     public void onMessage(Message message) {
+
+
         try {
+
             String messageBody = ((TextMessage) message).getText();
+
             System.out.println("Received Message: " + messageBody);
+
             senderAnswerBack.sendMessage(messageBody);
+
         } catch (JMSException | TransformerException e) {
+
             e.printStackTrace();
         }
 
