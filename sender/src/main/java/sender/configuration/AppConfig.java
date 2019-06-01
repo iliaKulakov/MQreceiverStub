@@ -13,9 +13,12 @@ public class AppConfig {
     @Value("${spring.activemq.broker-url}")
     private String brokerUrl;
 
+    @Value("${application.default.queue}")
+    private String defaultQueue;
+
     @Bean
     public ActiveMQQueue queue() {
-        return new ActiveMQQueue("testq");
+        return new ActiveMQQueue(defaultQueue);
     }
 
     @Bean

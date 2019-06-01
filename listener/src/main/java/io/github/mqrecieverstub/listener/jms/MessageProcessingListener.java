@@ -2,7 +2,6 @@ package io.github.mqrecieverstub.listener.jms;
 
 import io.github.mqrecieverstub.listener.sender.SenderAnswerBackImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
 import javax.jms.JMSException;
@@ -20,12 +19,15 @@ public class MessageProcessingListener implements MessageListener {
 
     @Override
     public void onMessage(Message message) {
-        try {
-            String messageBody = ((TextMessage) message).getText();
-            System.out.println("Received Message: " + messageBody);
-            senderAnswerBack.sendMessage(messageBody);
-        } catch (JMSException | TransformerException e) {
-            e.printStackTrace();
+        if (message instanceof TextMessage) {
+            try {
+
+                String messageBody = ((TextMessage) message).getText();
+                System.out.println("Received Message: " + messageBody);
+                senderAnswerBack.sendMessage(messageBody);
+            } catch (JMSException | TransformerException e) {
+                e.printStackTrace();
+            }
         }
 
     }

@@ -27,11 +27,6 @@ allprojects {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-activemq'
-    implementation 'org.springframework.boot:spring-boot-starter-amqp'
-    implementation 'org.springframework.boot:spring-boot-starter-integration'
-    compile("org.springframework.boot:spring-boot-starter-activemq")
-    compile("com.fasterxml.jackson.core:jackson-databind")
-
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    compile group: 'org.apache.activemq', name: 'activemq-all', version: '5.15.9'
+    compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version: '2.9.9'
 }
