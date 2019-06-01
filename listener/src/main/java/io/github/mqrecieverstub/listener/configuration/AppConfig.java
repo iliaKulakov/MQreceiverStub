@@ -1,6 +1,7 @@
 package io.github.mqrecieverstub.listener.configuration;
 
 import io.github.mqrecieverstub.listener.jms.MessageProcessingListener;
+import io.github.mqrecieverstub.listener.sender.SenderAnswerBackImpl;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -38,10 +39,15 @@ public class AppConfig {
     }
 
     @Bean
+    public MessageProcessingListener messageProcessingListener() {
+        return new MessageProcessingListener();
+    }
+
+    @Bean
     public DefaultMessageListenerContainer jmsMessageListenerContainer() {
         SimpleJmsListenerEndpoint endpoint =
                 new SimpleJmsListenerEndpoint();
-        endpoint.setMessageListener(new MessageProcessingListener());
+        endpoint.setMessageListener(messageProcessingListener());
         endpoint.setDestination(defaultQueue);
 
         return jmsListenerContainerFactory()

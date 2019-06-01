@@ -29,8 +29,8 @@ public class JmsMessageListenerExample {
             producer.send(msg);
 
             // Consumer
-            MessageConsumer consumer = session.createConsumer(queue);
-            consumer.setMessageListener(new ConsumerMessageListener("Consumer"));
+//            MessageConsumer consumer = session.createConsumer(queue);
+//            consumer.setMessageListener(new ConsumerMessageListener("Consumer"));
             connection.start();
             Thread.sleep(1000);
             session.close();
