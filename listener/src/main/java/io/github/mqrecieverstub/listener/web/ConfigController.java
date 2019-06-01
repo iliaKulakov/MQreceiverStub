@@ -1,12 +1,14 @@
 package io.github.mqrecieverstub.listener.web;
 
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.mqrecieverstub.listener.domain.BankSystemsDomain;
 import io.github.mqrecieverstub.listener.dto.BankSystemInfoDto;
 import io.github.mqrecieverstub.listener.repository.BankSystemInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.DataInput;
 import java.util.List;
 
 @RestController
@@ -14,6 +16,8 @@ import java.util.List;
 public class ConfigController {
 
     private BankSystemInfoRepository bankSystemInfoRepository;
+    private String json;
+    ObjectMapper mapper = new ObjectMapper();
 
     @Autowired
     public ConfigController(BankSystemInfoRepository bankSystemInfoRepository) {
@@ -22,10 +26,12 @@ public class ConfigController {
 
     @ResponseBody
     @PostMapping
-    public BankSystemsDomain createBankSystemDatabaseRecord(BankSystemInfoDto bankSystemInfoDto) {
+    public BankSystemsDomain createBankSystemDatabaseRecord(@RequestBody String json) throws Exception {
 
-        BankSystemsDomain bankSystemsDomain = new BankSystemsDomain(bankSystemInfoDto.getBankSystemOne(), bankSystemInfoDto.getBankSystemTwo());
-        bankSystemsDomain = bankSystemInfoRepository.save(bankSystemsDomain);
+        this.json  = json;
+        BankSystemInfoDto bankSystemInfoDto1 = mapper.readValue(json, BankSystemInfoDto.class);
+        BankSystemsDomain bankSystemsDomain = new BankSystemsDomain(bankSystemInfoDto1.getBankSystemOne(), bankSystemInfoDto1.getBankSystemTwo());
+        bankSystemsDomain = this.bankSystemInfoRepository.save(bankSystemsDomain);
         return bankSystemsDomain;
     }
 
@@ -36,4 +42,5 @@ public class ConfigController {
 
         return bankSystemsDomains;
     }
+
 }
