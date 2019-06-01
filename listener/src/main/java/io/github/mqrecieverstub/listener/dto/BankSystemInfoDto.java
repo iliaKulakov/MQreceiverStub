@@ -4,31 +4,38 @@ import java.io.Serializable;
 
 public class BankSystemInfoDto implements Serializable {
 
-    private int BankSystemOne;
-    private int BankSystemTwo;
+    private int bankSystemOne;
+    private int bankSystemTwo;
 
     public BankSystemInfoDto(int bankSystemOne, int bankSystemTwo) {
-        BankSystemOne = bankSystemOne;
-        BankSystemTwo = bankSystemTwo;
+        this.bankSystemOne = bankSystemOne;
+        this.bankSystemTwo = bankSystemTwo;
     }
 
     public BankSystemInfoDto() {
     }
 
     public int getBankSystemOne() {
-        return BankSystemOne;
+        return bankSystemOne;
     }
 
     public void setBankSystemOne(int bankSystemOne) {
-        BankSystemOne = bankSystemOne;
+        this.bankSystemOne = bankSystemOne;
     }
 
     public int getBankSystemTwo() {
-        return BankSystemTwo;
+        return bankSystemTwo;
     }
 
     public void setBankSystemTwo(int bankSystemTwo) {
-        BankSystemTwo = bankSystemTwo;
+        this.bankSystemTwo = bankSystemTwo;
     }
 
+    @Override
+    public String toString() {
+        return "BankSystemInfoDto{" +
+                "bankSystemOne=" + bankSystemOne +
+                ", bankSystemTwo=" + bankSystemTwo +
+                '}';
+    }
 }
