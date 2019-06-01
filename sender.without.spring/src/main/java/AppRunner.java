@@ -22,12 +22,12 @@ public class AppRunner {
         Reader reader = new Reader();
         reader.readMessageWithoutSpring();
 
-        ExecutorService threadPool = Executors.newFixedThreadPool(5);
+        ExecutorService threadPool = Executors.newFixedThreadPool(1);
+        threadPool.execute(senderWithConcurrency);
 
-        for (int i = 0; i < 1; i++) {
-            threadPool.execute(senderWithConcurrency);
-
-        }
+//
+//        for (int i = 0; i < 1; i++) {
+//        }
 
 
     }

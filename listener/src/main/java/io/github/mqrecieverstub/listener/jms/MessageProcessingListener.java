@@ -21,8 +21,6 @@ public class MessageProcessingListener implements MessageListener {
     @Override
     @JmsListener(destination = "mq.xml.out")
     public void onMessage(Message message) {
-
-
         try {
 
             String messageBody = ((TextMessage) message).getText();

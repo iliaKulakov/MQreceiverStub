@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @SpringBootApplication(scanBasePackages = "io.github.mqrecieverstub.listener")
 @EnableTransactionManagement
 @EnableJms
-public class ListenerStub implements ApplicationRunner {
+public class ListenerStub  {
 
     @Autowired
     MessageProcessingListener messageProcessingListener;
@@ -25,12 +25,12 @@ public class ListenerStub implements ApplicationRunner {
 
     }
 
-    public void run(ApplicationArguments args) throws Exception{
-
-        @JmsListener(destination = "mq.xml.out")
-        messageProcessingListener.onMessage();
-
-
-    }
+//    public void run(ApplicationArguments args) throws Exception{
+//
+////        @JmsListener(destination = "mq.xml.out")
+////        messageProcessingListener.onMessage();
+//
+//
+//    }
 
 }
