@@ -16,7 +16,6 @@ public class MessageProcessingListener implements MessageListener {
     @Autowired
     private Sender senderAnswerBack;
 
-
     @Override
     public void onMessage(Message message) {
         if (message instanceof TextMessage) {
