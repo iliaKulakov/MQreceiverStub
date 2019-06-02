@@ -25,13 +25,14 @@ public class ConfigProcessing {
     BankSystemsDomain getConfigInfoFromDb() {
         List<BankSystemsDomain> bankSystemsDomains = bankSystemInfoRepository.findAll();
         //TODO: Тут надо сразу определять тип
-        Stream bankSystemDomainsStream = bankSystemsDomains.stream();
+        Stream<BankSystemsDomain> bankSystemDomainsStream = bankSystemsDomains.stream();
         Comparator<BankSystemsDomain> comparator = Comparator.comparing(BankSystemsDomain::getId);
 
         //TODO: Тут возращается optional. Почему ты сразу возращаешь объект без проверки?
 
-        Optional<BankSystemsDomain> result = (Optional<BankSystemsDomain>) bankSystemDomainsStream.max(comparator).get();
-        return result.isPresent() ? result.get() : defaultConfingVar;
+        Optional<BankSystemsDomain> result = bankSystemDomainsStream.max(comparator);
+
+        return result.orElseGet(() -> defaultConfingVar);
 
     }
 }
