@@ -1,6 +1,6 @@
 package io.github.mqrecieverstub.listener.service;
 
-import io.github.mqrecieverstub.listener.domain.BankSystemsDomain;
+import io.github.mqrecieverstub.listener.domain.BankSystemInfo;
 import io.github.mqrecieverstub.listener.repository.BankSystemInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,8 @@ import java.util.stream.Stream;
 
 @Service
 public class ConfigProcessing {
-    BankSystemsDomain defaultConfingVar = new BankSystemsDomain(0, 0);
+//    TODO: Константы всегда лучше сразу FIINAL делать и старайся все перменные закрывать
+    private final BankSystemInfo defaultConfingVar = new BankSystemInfo(0, 0, 0, 0);
     private BankSystemInfoRepository bankSystemInfoRepository;
 
     @Autowired
@@ -20,23 +21,21 @@ public class ConfigProcessing {
         this.bankSystemInfoRepository = bankSystemInfoRepository;
     }
 
-    public BankSystemsDomain getConfigInfoFromDb() {
-        List<BankSystemsDomain> bankSystemsDomains = bankSystemInfoRepository.findAll();
-        //TODO: Тут надо сразу определять тип
-        Stream<BankSystemsDomain> bankSystemDomainsStream = bankSystemsDomains.stream();
-        Comparator<BankSystemsDomain> comparator = Comparator.comparing(BankSystemsDomain::getId);
+    public BankSystemInfo getConfigInfoFromDb() {
+        List<BankSystemInfo> bankSystemInfos = bankSystemInfoRepository.findAll();
 
-        //TODO: Тут возращается optional. Почему ты сразу возращаешь объект без проверки?
+        Stream<BankSystemInfo> bankSystemDomainsStream = bankSystemInfos.stream();
+        Comparator<BankSystemInfo> comparator = Comparator.comparing(BankSystemInfo::getId);
 
-        Optional<BankSystemsDomain> result = bankSystemDomainsStream.max(comparator);
+        Optional<BankSystemInfo> result = bankSystemDomainsStream.max(comparator);
 
         return result.orElseGet(() -> defaultConfingVar);
 
     }
 
     public void putDefaultConfigInfoInDatabase() {
-        List<BankSystemsDomain> bankSystemsDomains = bankSystemInfoRepository.findAll();
-        if (bankSystemsDomains.size() <= 0) {
+        List<BankSystemInfo> bankSystemInfos = bankSystemInfoRepository.findAll();
+        if (bankSystemInfos.size() <= 0) {
             bankSystemInfoRepository.save(defaultConfingVar);
         }
 

@@ -1,5 +1,6 @@
 package io.github.mqrecieverstub.listener.service;
 
+import io.github.mqrecieverstub.listener.domain.BankSystemInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.w3c.dom.Document;
@@ -19,7 +20,6 @@ import java.io.StringWriter;
 public class MessageHandling {
 
     private final Parser parser;
-
     private ConfigProcessing configProcessing;
 
 
@@ -31,17 +31,31 @@ public class MessageHandling {
 
     public String prepareAnswerToSender(String messageForProcessing) throws TransformerException {
 
-        Document doc = parser.convertStringToXMLDocument(messageForProcessing);
+        Document xmlDocumentMessage = parser.convertStringToXMLDocument(messageForProcessing);
 
         //is it correct realisation for choose answer?
-        if (configProcessing.getConfigInfoFromDb().getBankSystemOne() == 0) {
 
-            doc.getDocumentElement().getElementsByTagName("currency").item(0).setTextContent("JAR");
+        BankSystemInfo bankSystemInfo = configProcessing.getConfigInfoFromDb();
+        Node currencyNode = this.getCurrencyNode(xmlDocumentMessage);
+
+//        TODO: Можно делать например так, или можно сделать через switch если значение с которым сравниывешь является константой или значемем из enum.
+
+//        switch (bankSystemInfo.getBankSystemOne()) {
+//            case 0:
+//                currencyNode.setTextContent("JAR");
+//                break;
+//                default:
+//                    currencyNode.setTextContent("USD");
+//                    break;
+//        }
+
+        if (bankSystemInfo.getBankSystemOne() == bankSystemInfo.getDefaultBankSystemOne()) {
+            currencyNode.setTextContent("JAR");
         } else {
-            doc.getDocumentElement().getElementsByTagName("currency").item(0).setTextContent("USD");
+            currencyNode.setTextContent("USD");
         }
 
-        NodeList docElements = doc.getDocumentElement().getElementsByTagName("config");
+        NodeList docElements = xmlDocumentMessage.getDocumentElement().getElementsByTagName("config");
 
         for (int i = 0; i < docElements.getLength(); i++) {
             Node elements = docElements.item(i);
@@ -54,8 +68,17 @@ public class MessageHandling {
         Transformer transformer = tf.newTransformer();
         transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
         StringWriter writer = new StringWriter();
-        transformer.transform(new DOMSource(doc), new StreamResult(writer));
+        transformer.transform(new DOMSource(xmlDocumentMessage), new StreamResult(writer));
         return writer.getBuffer().toString().replaceAll("\n|\r", "");
+    }
 
+    private Node getCurrencyNode(Document document) {
+
+        String elementName = "currency";
+        int firstElementOfCurrencyNode = 0;
+
+        Node currencyTypeNode = document.getDocumentElement().getElementsByTagName(elementName).item(firstElementOfCurrencyNode);
+
+        return currencyTypeNode;
     }
 }

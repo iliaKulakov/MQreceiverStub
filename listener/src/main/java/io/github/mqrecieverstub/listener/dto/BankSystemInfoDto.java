@@ -1,41 +1,18 @@
 package io.github.mqrecieverstub.listener.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.io.Serializable;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class BankSystemInfoDto implements Serializable {
 
     private int bankSystemOne;
+    private int defaultBankSystemOne;
     private int bankSystemTwo;
-
-    public BankSystemInfoDto(int bankSystemOne, int bankSystemTwo) {
-        this.bankSystemOne = bankSystemOne;
-        this.bankSystemTwo = bankSystemTwo;
-    }
-
-    public BankSystemInfoDto() {
-    }
-
-    public int getBankSystemOne() {
-        return bankSystemOne;
-    }
-
-    public void setBankSystemOne(int bankSystemOne) {
-        this.bankSystemOne = bankSystemOne;
-    }
-
-    public int getBankSystemTwo() {
-        return bankSystemTwo;
-    }
-
-    public void setBankSystemTwo(int bankSystemTwo) {
-        this.bankSystemTwo = bankSystemTwo;
-    }
-
-    @Override
-    public String toString() {
-        return "BankSystemInfoDto{" +
-                "bankSystemOne=" + bankSystemOne +
-                ", bankSystemTwo=" + bankSystemTwo +
-                '}';
-    }
+    private int defaultBankSystemTwo;
 }
