@@ -1,7 +1,6 @@
 package io.github.mqrecieverstub.listener.configuration;
 
 import io.github.mqrecieverstub.listener.jms.MessageProcessingListener;
-import io.github.mqrecieverstub.listener.sender.SenderAnswerBackImpl;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

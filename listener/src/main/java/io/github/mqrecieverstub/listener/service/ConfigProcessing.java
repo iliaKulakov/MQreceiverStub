@@ -3,7 +3,6 @@ package io.github.mqrecieverstub.listener.service;
 import io.github.mqrecieverstub.listener.domain.BankSystemsDomain;
 import io.github.mqrecieverstub.listener.repository.BankSystemInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.retry.ExhaustedRetryException;
 import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
@@ -13,9 +12,8 @@ import java.util.stream.Stream;
 
 @Service
 public class ConfigProcessing {
+    BankSystemsDomain defaultConfingVar = new BankSystemsDomain(0, 0);
     private BankSystemInfoRepository bankSystemInfoRepository;
-
-    BankSystemsDomain defaultConfingVar = new BankSystemsDomain(0,0);
 
     @Autowired
     public ConfigProcessing(BankSystemInfoRepository bankSystemInfoRepository) {
@@ -36,9 +34,9 @@ public class ConfigProcessing {
 
     }
 
-    public void putDefaultConfigInfoInDatabase(){
+    public void putDefaultConfigInfoInDatabase() {
         List<BankSystemsDomain> bankSystemsDomains = bankSystemInfoRepository.findAll();
-        if(bankSystemsDomains.size()<=0){
+        if (bankSystemsDomains.size() <= 0) {
             bankSystemInfoRepository.save(defaultConfingVar);
         }
 

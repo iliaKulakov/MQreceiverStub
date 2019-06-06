@@ -25,7 +25,7 @@ public class ListenerStub implements ApplicationRunner {
         SpringApplication.run(ListenerStub.class, args);
     }
 
-    public void run(ApplicationArguments args) throws Exception{
+    public void run(ApplicationArguments args) throws Exception {
 
         configProcessing.putDefaultConfigInfoInDatabase();
 
