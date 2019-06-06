@@ -20,7 +20,7 @@ public class Sender {
     public void send(String message) {
         jmsTemplate.convertAndSend(queue, message);
 
-        System.out.println("Sent message succesfully");
+        System.out.println("Sent message succesfully from Sender");
     }
 
 

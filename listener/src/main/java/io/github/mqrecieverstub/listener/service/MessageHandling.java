@@ -33,7 +33,7 @@ public class MessageHandling {
 
         Document doc = parser.convertStringToXMLDocument(messageForProcessing);
 
-
+        //is it correct realisation for choose answer?
         if (configProcessing.getConfigInfoFromDb().getBankSystemOne() == 0) {
 
             doc.getDocumentElement().getElementsByTagName("currency").item(0).setTextContent("JAR");
