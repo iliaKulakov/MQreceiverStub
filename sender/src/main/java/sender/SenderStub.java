@@ -31,7 +31,6 @@ public class SenderStub implements ApplicationRunner {
                 "</config>";
 
 
-
         sender.send(xmlMessage);
 
     }

@@ -15,7 +15,7 @@ public class SenderAnswerBackImpl implements Sender {
     private final MessageHandling messageHandling;
     private final JmsTemplate jmsTemplate;
 
-    @Value("${application.default.queue}")
+    @Value("${application.response.queue}")
     private String defaultQueue;
 
     @Autowired
