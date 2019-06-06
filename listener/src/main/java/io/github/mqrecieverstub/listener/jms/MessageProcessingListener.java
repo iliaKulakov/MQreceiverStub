@@ -18,11 +18,14 @@ public class MessageProcessingListener implements MessageListener {
 
     @Override
     public void onMessage(Message message) {
+
+
         if (message instanceof TextMessage) {
             try {
 
                 String messageBody = ((TextMessage) message).getText();
                 System.out.println("Received Message: " + messageBody);
+                System.out.println("Preparing to answer");
                 senderAnswerBack.sendMessage(messageBody);
             } catch (Exception e) {
                 e.printStackTrace();
